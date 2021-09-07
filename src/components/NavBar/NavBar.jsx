@@ -10,7 +10,8 @@ import CartWidget from "./CartWidget";
 
 
 
-function NavBar() {
+function NavBar(props) { //recibo count desde APP.jsx
+    const {count} = props; //destructuring saco count de props
     return(
       <>
       <Navbar bg="ligth" expand="lg" >
@@ -26,15 +27,21 @@ function NavBar() {
             <Nav.Link href="#link">Dormitorio</Nav.Link>
             <Nav.Link href="#link">Baño</Nav.Link>
             <Nav.Link href="#link">Ofertas</Nav.Link>
+            <Nav.Link href="#link">Ofertas 2</Nav.Link>
           </Nav>
+          
           <Form className="d-flex">
+           
             {/* <FormControl type="submit" placeholder="Login" className="mr-2" aria-label="Search"/> */}
             <Button variant="btn btn-success">Login</Button>
+           
           </Form>
         </Navbar.Collapse>
+        
       </Container>
-      <CartWidget />
+      <CartWidget count={count} />
     </Navbar>
+    
     </>
     
     );
