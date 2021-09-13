@@ -40,6 +40,7 @@ function NavBar(props) { //recibo count desde APP.jsx
         
       </Container>
       <CartWidget count={count} />
+      
     </Navbar>
     
     </>

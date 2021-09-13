@@ -18,7 +18,7 @@ function App() {
   
   return (
       <>
-      <NavBar count={count}/>
+      <NavBar count={count}/> 
       <ItemListContainer name={name} onAdd={onAdd} />
         
     
