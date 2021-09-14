@@ -33,7 +33,7 @@ function NavBar(props) { //recibo count desde APP.jsx
           <Form className="d-flex">
            
             {/* <FormControl type="submit" placeholder="Login" className="mr-2" aria-label="Search"/> */}
-            <Button variant="btn btn-success">Login</Button>
+            <Button variant="btn btn-outline-success">Login</Button>
            
           </Form>
         </Navbar.Collapse>

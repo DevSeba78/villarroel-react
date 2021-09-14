@@ -50,7 +50,7 @@ const ItemListContainer = ({name, onAdd}) => {
         <>
             <p className="text-center mt-3">Bienvenido <strong>{name}</strong> a la app de Ruca </p>
              
-            {loading ?<h3>Cargando page....</h3>: <ItemList productos={productos}/>}
+            {loading ?<h4>Cargando page....</h4>: <ItemList productos={productos}/>}
             
             <ItemCount stock={5} initial={1} onAdd={onAdd}/>
         </>

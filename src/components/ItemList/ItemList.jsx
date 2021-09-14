@@ -1,5 +1,5 @@
 import Item from "./Item"
-//import ItemListContainer from "../ItemListContainer"
+
 
 const ItemList = ({productos}) => {
     console.log(productos)
