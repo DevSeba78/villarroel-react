@@ -20,11 +20,15 @@ const Producto = [
     }else{
         reject("algo salio mal")
     }
-    
-
 })
+const productoSolo = {id: '1', name: 'ruca1', descripcion: 'mantel', stock: 8, img: "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/357/585/products/c-bandeja-linea-farm1-ff30f4a83e4bdec4c116157608071720-240-0.jpg" }
 
-
+export const promesaSolo = new Promise((resolve) => {
+    setTimeout(() =>{
+        resolve(productoSolo)
+    },2000)
+})
+ 
 //return loquesea.json() para parsear el json
 
 const ItemListContainer = ({name, onAdd}) => {

@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import ItemListContainer from "./components/ItemListContainer"
 import { useState } from "react";
+import ItemDetailsContainer from "./components/Containers/ItemDetailsContainer";
 
 const name = prompt('Ingrese su nombre: ')
 
@@ -20,6 +21,7 @@ function App() {
       <>
       <NavBar count={count}/> 
       <ItemListContainer name={name} onAdd={onAdd} />
+      <ItemDetailsContainer />
         
     
       </>
