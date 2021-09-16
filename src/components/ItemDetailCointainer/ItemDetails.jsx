@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/ButtonGroup'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
-//import ItemCount from '../ItemCount'
+// import ItemCount from '../ItemCount'
 
 const ItemDetails = ({detail}) => {
     return (
@@ -24,7 +24,7 @@ const ItemDetails = ({detail}) => {
                         <Button className="btn btn-outline-primary" >Agregar al carrito</Button>
                         <Button className="btn btn-outline-danger">-</Button>
                         {/* <ItemDetails mostrar={MostrarDetalles}/> */}
-                        {/* //<ItemCount /> */}
+                        {/* <ItemCount /> */}
                         </Card.Body>
                         
                     </Card>

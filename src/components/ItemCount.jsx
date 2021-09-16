@@ -32,7 +32,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
                 <Card.Body className="text-center">
                     {/* <Card.Title>Algo para comprar</Card.Title> */}
                     <Card.Text>
-                    {count}
+                     <strong>Cant:</strong> {count}
                     </Card.Text>
                     <Button className="btn btn-outline-info" onClick={Agregar}>+</Button>
                     <Button className="btn btn-outline-primary" onClick={agregarCarrito}>Agregar al carrito</Button>

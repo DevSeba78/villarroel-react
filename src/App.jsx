@@ -5,6 +5,7 @@ import './App.css';
 import ItemListContainer from "./components/ItemListContainer"
 import { useState } from "react";
 import ItemDetailsContainer from "./components/Containers/ItemDetailsContainer";
+import Cart from './components/Cart/Cart';
 
 //const name = prompt('Ingrese su nombre: ')
 const name = "Persona"
@@ -25,8 +26,12 @@ function App() {
         <Route path="/" exact>
           <ItemListContainer name={name} onAdd={onAdd} />
         </Route>
-       <Route exact path="/detalle" component={ItemDetailsContainer}  />
-       {/* <Route exact path="/cart" component={Cart}  /> */}
+        <Route path="/categoria/:idCategoria" exact>
+          <ItemListContainer name={name} onAdd={onAdd} />
+        </Route>
+       <Route exact path="/detalle/:id" component={ItemDetailsContainer}  />
+       
+       <Route exact path="/cart" component={Cart}  />
 
       {/* <Cart /> */}
       </Switch>

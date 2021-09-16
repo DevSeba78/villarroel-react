@@ -7,6 +7,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 import CartWidget from "./CartWidget";
+import {LinkContainer} from 'react-router-bootstrap'
+import { Link } from "react-router-dom";
 
 
 
@@ -16,18 +18,33 @@ function NavBar(props) { //recibo count desde APP.jsx
       <>
       <Navbar bg="ligth" expand="lg" >
       <Container>
-        <Navbar.Brand href="#home"><i className="fab fa-pagelines"> Ruca Home&Design</i></Navbar.Brand>
+        <Link to="/"> 
+                <Navbar.Brand><i className="fab fa-pagelines"> Ruca Home&Design</i></Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
+            <Link to="/"> 
+            <Nav.Link >Home</Nav.Link>
+            </Link>
+            <LinkContainer exact to={`/categoria/Manteleria`}> 
             <Nav.Link href="#link">Manteleria</Nav.Link>
+            </LinkContainer>
+            <LinkContainer  to="/categoria/Deco"> 
             <Nav.Link href="#link">Deco</Nav.Link>
-            <Nav.Link href="#link">Bazar</Nav.Link>
-            <Nav.Link href="#link">Dormitorio</Nav.Link>
-            <Nav.Link href="#link">Baño</Nav.Link>
-            <Nav.Link href="#link">Ofertas</Nav.Link>
-            <Nav.Link href="#link">Ofertas 2</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/categoria/Bazar"> 
+              <Nav.Link href="#link">Bazar</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/categoria/Dormitorio"> 
+              <Nav.Link href="#link">Dormitorio</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/categoria/Baño"> 
+              <Nav.Link href="#link">Baño</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/categoria/Ofertas"> 
+              <Nav.Link href="#link">Ofertas</Nav.Link>
+            </LinkContainer>
           </Nav>
           
           <Form className="d-flex">
@@ -39,7 +56,9 @@ function NavBar(props) { //recibo count desde APP.jsx
         </Navbar.Collapse>
         
       </Container>
-      <CartWidget count={count} />
+      <Link exact to="/Cart"> 
+        <CartWidget count={count} />
+      </Link>
       
     </Navbar>
     

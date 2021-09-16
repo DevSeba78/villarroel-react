@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/ButtonGroup'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
+import { Link } from 'react-router-dom'
 //import ItemDetails from '../ItemDetailCointainer/ItemDetails'
 //import ItemCount from '../ItemCount'
 
@@ -30,7 +31,9 @@ const Item = ({articulos}) => {
                         <Card.Text>
                             Description: {articulos.descripcion}
                         </Card.Text>
-                        <Button className="btn btn-outline-success" >Detalles</Button>
+                        <Link to={`/detalle/${articulos.id}`}> 
+                            <Button className="btn btn-outline-success" >Detalles</Button>
+                        </Link>
                         {/* <ItemDetails mostrar={MostrarDetalles}/> */}
                         {/* //<ItemCount /> */}
                         </Card.Body>
