@@ -30,7 +30,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
             <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src="" />
                 <Card.Body className="text-center">
-                    <Card.Title>Algo para comprar</Card.Title>
+                    {/* <Card.Title>Algo para comprar</Card.Title> */}
                     <Card.Text>
                     {count}
                     </Card.Text>

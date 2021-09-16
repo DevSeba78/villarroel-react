@@ -1,3 +1,4 @@
+import {BrowserRouter,Switch, Route} from 'react-router-dom'
 import NavBar from "./components/NavBar/NavBar"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -5,8 +6,8 @@ import ItemListContainer from "./components/ItemListContainer"
 import { useState } from "react";
 import ItemDetailsContainer from "./components/Containers/ItemDetailsContainer";
 
-const name = prompt('Ingrese su nombre: ')
-
+//const name = prompt('Ingrese su nombre: ')
+const name = "Persona"
 function App() {
 
   const [count, setCount] = useState(0) //seteo aca el contador
@@ -18,13 +19,20 @@ function App() {
 }
   
   return (
-      <>
+      <BrowserRouter>
       <NavBar count={count}/> 
-      <ItemListContainer name={name} onAdd={onAdd} />
-      <ItemDetailsContainer />
+      <Switch>
+        <Route path="/" exact>
+          <ItemListContainer name={name} onAdd={onAdd} />
+        </Route>
+       <Route exact path="/detalle" component={ItemDetailsContainer}  />
+       {/* <Route exact path="/cart" component={Cart}  /> */}
+
+      {/* <Cart /> */}
+      </Switch>
         
     
-      </>
+      </BrowserRouter>
   );
 }
 
