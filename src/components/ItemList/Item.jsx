@@ -1,9 +1,9 @@
 //import React, {useState} from 'react'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/ButtonGroup'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/Container'
+// import Row from 'react-bootstrap/Row'
+// import Col from 'react-bootstrap/Col'
+// import Container from 'react-bootstrap/Container'
 import { Link } from 'react-router-dom'
 //import ItemDetails from '../ItemDetailCointainer/ItemDetails'
 //import ItemCount from '../ItemCount'
@@ -20,11 +20,8 @@ const Item = ({articulos}) => {
 
     return (
         <>
-            {<Container>
-                <Row className="justify-content-md-center mt-2">
-                
-                    <Col xs={6} md={4}>
-                    <Card style={{ width: '18rem' }}>
+            {
+                    <Card style={{ width: '18rem' }} >
                         <Card.Img variant="top" src={articulos.img} alt="fotos" />
                         <Card.Body className="justify-content text-center">
                         <Card.Title>Producto: {articulos.name}</Card.Title>
@@ -39,10 +36,7 @@ const Item = ({articulos}) => {
                         </Card.Body>
                         
                     </Card>
-                    </Col>
-               
-            </Row>
-            </Container>}
+                    }
 
             {/* {<div key={articulos.id} className=" container card w-25 mt-3 text-center ">
                 <Card style={{ width: '18rem' }}>

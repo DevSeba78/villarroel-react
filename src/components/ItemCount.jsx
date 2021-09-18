@@ -27,19 +27,19 @@ const ItemCount = ({stock, initial, onAdd}) => {
     }
     return (
         <div>
-            <Card style={{ width: '18rem' }}>
+            {/* <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src="" />
                 <Card.Body className="text-center">
                     {/* <Card.Title>Algo para comprar</Card.Title> */}
                     <Card.Text>
-                     <strong>Cant:</strong> {count}
+                     <strong>Cant: {count}</strong>
                     </Card.Text>
                     <Button className="btn btn-outline-info" onClick={Agregar}>+</Button>
                     <Button className="btn btn-outline-primary" onClick={agregarCarrito}>Agregar al carrito</Button>
                     <Button className="btn btn-outline-danger" onClick={restart}>-</Button>
-                   
+{/*                    
                 </Card.Body>
-            </Card>
+            </Card> */}
 
             
         </div>

@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/ButtonGroup'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
-// import ItemCount from '../ItemCount'
+//import ItemCount from '../ItemCount'
 
 const ItemDetails = ({detail}) => {
     return (
@@ -12,7 +12,7 @@ const ItemDetails = ({detail}) => {
             {<Container>
                 <Row className="justify-content-md-center mt-2">
                 
-                    <Col xs={6} md={4}>
+                    <Col className="col-md-6">
                     <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={detail.img} alt="fotos" />
                         <Card.Body className="justify-content text-center">
@@ -23,7 +23,7 @@ const ItemDetails = ({detail}) => {
                         <Button className="btn btn-outline-info" >+</Button>
                         <Button className="btn btn-outline-primary" >Agregar al carrito</Button>
                         <Button className="btn btn-outline-danger">-</Button>
-                        {/* <ItemDetails mostrar={MostrarDetalles}/> */}
+                        {/* <ItemDetails mostrar={MostrarDetalles}/>
                         {/* <ItemCount /> */}
                         </Card.Body>
                         

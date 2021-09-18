@@ -13,9 +13,11 @@ const ItemDetailsContainer = () => {
     console.log(promesa)
     return (
         <>
+            
             <ItemDetails detail={detail}/>
+            
         </>
-    )
+        )
 }
 
 export default ItemDetailsContainer

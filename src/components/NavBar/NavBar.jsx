@@ -24,9 +24,9 @@ function NavBar(props) { //recibo count desde APP.jsx
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Link to="/"> 
+            {/* <Link to="/"> 
             <Nav.Link >Home</Nav.Link>
-            </Link>
+            </Link> */}
             <LinkContainer exact to={`/categoria/Manteleria`}> 
             <Nav.Link href="#link">Manteleria</Nav.Link>
             </LinkContainer>
@@ -36,7 +36,7 @@ function NavBar(props) { //recibo count desde APP.jsx
             <LinkContainer to="/categoria/Bazar"> 
               <Nav.Link href="#link">Bazar</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/categoria/Dormitorio"> 
+            {/* <LinkContainer to="/categoria/Dormitorio"> 
               <Nav.Link href="#link">Dormitorio</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/categoria/Baño"> 
@@ -44,7 +44,7 @@ function NavBar(props) { //recibo count desde APP.jsx
             </LinkContainer>
             <LinkContainer to="/categoria/Ofertas"> 
               <Nav.Link href="#link">Ofertas</Nav.Link>
-            </LinkContainer>
+            </LinkContainer> */}
           </Nav>
           
           <Form className="d-flex">
