@@ -22,11 +22,12 @@ const Item = ({articulos}) => {
         <>
             {
                     <Card style={{ width: '18rem' }} >
-                        <Card.Img variant="top" src={articulos.img} alt="fotos" />
+                        <Card.Img variant="top" src={articulos.img} alt="fotos" className="h-150" />
                         <Card.Body className="justify-content text-center">
                         <Card.Title>Producto: {articulos.name}</Card.Title>
                         <Card.Text>
-                            Description: {articulos.descripcion}
+                            Description: {articulos.descripcion}<br/>
+                            Precio: ${articulos.precio}
                         </Card.Text>
                         <Link to={`/detalle/${articulos.id}`}> 
                             <Button className="btn btn-outline-success" >Detalles</Button>

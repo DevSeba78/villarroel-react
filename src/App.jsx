@@ -3,31 +3,34 @@ import NavBar from "./components/NavBar/NavBar"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import ItemListContainer from "./components/ItemListContainer"
-import { useState } from "react";
+//import { useState } from "react";
 import ItemDetailsContainer from "./components/Containers/ItemDetailsContainer";
 import Cart from './components/Cart/Cart';
+//import {createContext} from "react"
+import {cartContextProvider} from './Context/cartContext';
 
 //const name = prompt('Ingrese su nombre: ')
-const name = "Persona"
+//const name = "Persona"
 function App() {
 
-  const [count, setCount] = useState(0) //seteo aca el contador
+//   const [count, setCount] = useState(0) //seteo aca el contador
 
-  const onAdd = (cant) => {//declaro aca la funcion onadd aca para luego pasar los estados (props) a los hijos
-    setCount(cant)
-    console.log(cant);
-    console.log(count);
-}
+//   const onAdd = (cant) => {//declaro aca la funcion onadd aca para luego pasar los estados (props) a los hijos
+//     setCount(cant)
+//     console.log(cant);
+//     console.log(count);
+// }
   
   return (
+      <cartContextProvider>
       <BrowserRouter>
-      <NavBar count={count}/> 
+      <NavBar /> 
       <Switch>
         <Route path="/" exact>
-          <ItemListContainer name={name} onAdd={onAdd} />
+          <ItemListContainer />
         </Route>
         <Route path="/categoria/:idCategoria" exact>
-          <ItemListContainer name={name} onAdd={onAdd} />
+          <ItemListContainer  />
         </Route>
        <Route exact path="/detalle/:id" component={ItemDetailsContainer}  />
        
@@ -38,6 +41,7 @@ function App() {
         
     
       </BrowserRouter>
+      </cartContextProvider>
   );
 }
 

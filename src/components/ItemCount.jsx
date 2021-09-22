@@ -2,43 +2,58 @@ import React from 'react'
 import {useState} from 'react'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/ButtonGroup'
+import {Link} from 'react-router-dom'
+
 
 const ItemCount = ({stock, initial, onAdd}) => {
     const [count, setCount] = useState(initial)
-    //const [canti, setCanti] = useState(stock)
+    const [cambiarBoton, setCambiarBoton] = useState(true)
+   
     function Agregar (){
         if (count <5) {
             setCount(count + 1) 
-            //setCanti(stock-1)
-            //console.log("stock",canti);
+            
         }
         
     }
     function restart() {
         if (count > 1) {
             setCount(count-1)
-            // setCanti(stock+1)
-            // console.log("stock",canti);
+           
         }
         
     }
     const agregarCarrito = ()=> {
         onAdd(count)
+        setCambiarBoton(false);
     }
     return (
         <div>
-            {/* <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="" />
-                <Card.Body className="text-center">
-                    {/* <Card.Title>Algo para comprar</Card.Title> */}
+          
                     <Card.Text>
-                     <strong>Cant: {count}</strong>
+                     <strong>Cant:</strong> {count}
                     </Card.Text>
-                    <Button className="btn btn-outline-info" onClick={Agregar}>+</Button>
-                    <Button className="btn btn-outline-primary" onClick={agregarCarrito}>Agregar al carrito</Button>
-                    <Button className="btn btn-outline-danger" onClick={restart}>-</Button>
-{/*                    
-                </Card.Body>
+                    
+                    {cambiarBoton ?
+                    <>
+                        <Button className="btn btn-outline-info" onClick={Agregar}>+</Button>
+                        <Button className="btn btn-outline-primary" onClick={agregarCarrito}>Agregar al carrito</Button>
+                        <Button className="btn btn-outline-danger" onClick={restart}>-</Button>
+                    </>
+                    :
+                    <>    
+                        <Link to={'/'}>
+                            <Button className="btn btn-outline-primary">Continuar Compra</Button>
+                        </Link>
+                        <Link to={'/cart'}>
+                            <Button className="btn btn-outline-primary" >Finalizar Compra</Button>
+                        </Link>
+                    </>
+                    }
+                    
+                    
+                 
+                {/* </Card.Body>
             </Card> */}
 
             
