@@ -9,7 +9,7 @@ const ItemList = ({productos}) => {
         <div className="container justify-content-center d-flex aling-items-center">
            <div className="row"> 
                 {productos.map(articulos =>(
-                    <div className="col-md-4 col-lg-6 mt-2" key={articulos.id}>
+                    <div className="col-3 mt-2" key={articulos.id}>
                         <Item articulos={articulos}/>
              </div>)
                 )}

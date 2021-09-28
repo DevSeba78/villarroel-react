@@ -3,6 +3,7 @@ import {useState} from 'react'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/ButtonGroup'
 import {Link} from 'react-router-dom'
+import {LinkContainer} from 'react-router-bootstrap'
 
 
 const ItemCount = ({stock, initial, onAdd}) => {
@@ -42,9 +43,9 @@ const ItemCount = ({stock, initial, onAdd}) => {
                     </>
                     :
                     <>    
-                        <Link to={'/'}>
-                            <Button className="btn btn-outline-primary">Continuar Compra</Button>
-                        </Link>
+                        <LinkContainer to={'/'}>
+                            <Button className="btn btn-outline-info">Continuar Compra</Button>
+                        </LinkContainer>
                         <Link to={'/cart'}>
                             <Button className="btn btn-outline-primary" >Finalizar Compra</Button>
                         </Link>

@@ -7,7 +7,7 @@ import ItemListContainer from "./components/ItemListContainer"
 import ItemDetailsContainer from "./components/Containers/ItemDetailsContainer";
 import Cart from './components/Cart/Cart';
 //import {createContext} from "react"
-import {cartContextProvider} from './Context/cartContext';
+import CartContextProvider from './Context/cartContext';
 
 //const name = prompt('Ingrese su nombre: ')
 //const name = "Persona"
@@ -20,9 +20,9 @@ function App() {
 //     console.log(cant);
 //     console.log(count);
 // }
-  
+  console.log(CartContextProvider);
   return (
-      <cartContextProvider>
+      <CartContextProvider>
       <BrowserRouter>
       <NavBar /> 
       <Switch>
@@ -41,7 +41,7 @@ function App() {
         
     
       </BrowserRouter>
-      </cartContextProvider>
+      </CartContextProvider>
   );
 }
 
