@@ -13,13 +13,15 @@ import { useCartContext } from '../../Context/cartContext'
 const ItemDetails = ({detail}) => {//detail viene de ItemDetailContainer
     
     const [cantSeleccionada, setCantidadSeleccionada] = useState(0) //seteo aca el contador
+
     const {addToCard}= useCartContext()
 
     const onAdd = (cant) => {//declaro aca la funcion onadd aca para luego pasar los estados (props) a los hijos
+        console.log(cant);
     setCantidadSeleccionada(cant)
-    addToCard({item: detail, cantidad:cant})
+    addToCard({item:detail,cantidad: cant})
     console.log(cantSeleccionada);
-    console.log(addToCard);
+    // console.log(addToCard);
     }
     
     return (

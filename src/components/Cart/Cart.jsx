@@ -13,12 +13,11 @@ const Cart = () => {
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Table heading</th>
-                                <th>Table heading</th>
-                                <th>Table heading</th>
-                                <th>Table heading</th>
-                                <th>Table heading</th>
-                                <th>Table heading</th>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Acciones</th>
+                                <th>Sub-total</th>
+                                <th>Total</th>
                             </tr>
                         </thead>
                         <tbody>

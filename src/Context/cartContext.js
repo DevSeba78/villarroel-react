@@ -10,12 +10,26 @@ export default function CartContextProvider ({children}){
 
     function addToCard(detail){//aca va la logica de duplicado
         
-        // let productoSeleccionado = detail.find(prod=>prod.item.id === detail.item.id) *****ver esta parte del codigo*****
-        // if(cartList.hasOwnProperty(detail.id)){
+        let productoSeleccionado = [...cartList]//detail.find(prod=>prod.item.id === detail.item.id) *****ver esta parte del codigo*****
+        console.log(productoSeleccionado)
+
+
+
+        // esto no me anda
+        // if(cartList.some(prod=>prod.item.id === detail.item.id)){
+        //     productoSeleccionado.find(prod=>prod.item.id === detail.item.id) //busco id
+        //     productoSeleccionado.detail.cantidad = productoSeleccionado[detail.item.id].cantidad +1
+        //     setCartList(productoSeleccionado)
+        //     console.log(productoSeleccionado)
+        // }
+        setCartList([...cartList,detail])
+       
+
+       
+       
         //     productoSeleccionado.cantidad = cartList[detail.id].cantidad+1
-            setCartList([...cartList,detail])
         //}
-        console.log(cartList);
+        //console.log(cartList);
     }
     function limpiarCart(detail){
         cartList([])
