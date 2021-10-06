@@ -9,17 +9,10 @@ import Cart from './components/Cart/Cart';
 //import {createContext} from "react"
 import CartContextProvider from './Context/cartContext';
 
-//const name = prompt('Ingrese su nombre: ')
-//const name = "Persona"
+
 function App() {
 
-//   const [count, setCount] = useState(0) //seteo aca el contador
 
-//   const onAdd = (cant) => {//declaro aca la funcion onadd aca para luego pasar los estados (props) a los hijos
-//     setCount(cant)
-//     console.log(cant);
-//     console.log(count);
-// }
   console.log(CartContextProvider);
   return (
       <CartContextProvider>

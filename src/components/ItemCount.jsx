@@ -6,9 +6,11 @@ import {Link} from 'react-router-dom'
 import {LinkContainer} from 'react-router-bootstrap'
 
 
+
 const ItemCount = ({stock, initial, onAdd}) => {
     const [count, setCount] = useState(initial)
     const [cambiarBoton, setCambiarBoton] = useState(true)
+    
    
     function Agregar (){
         if (count <5) {

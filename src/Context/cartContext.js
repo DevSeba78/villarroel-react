@@ -12,19 +12,21 @@ export default function CartContextProvider ({children}){
         
         let productoSeleccionado = [...cartList]
 
-            // if (productoSeleccionado.some(i => i.item.id === detail.item.id)) {
-            //     productoSeleccionado.find(i => i.item.id === detail.item.id).cantidad +=detail.cantidad
-            //     //console.log(productoSeleccionado)
-            //     setCartList(productoSeleccionado)}
+            if (productoSeleccionado.some(i => i.item.id === detail.item.id)) {
+                productoSeleccionado.find(i => i.item.id === detail.item.id).cantidad +=detail.cantidad
+                //console.log(productoSeleccionado)
+                setCartList(productoSeleccionado)}
                 //  else {setCart([...cart, detail])}}
 
        
-        if(productoSeleccionado.hasOwnProperty(detail.item.id)) {
+        // if(productoSeleccionado.hasOwnProperty(detail.item.id)) {
            
-            productoSeleccionado.find(i => i.item.id === detail.item.id).cantidad +=detail.cantidad
-            setCartList(productoSeleccionado)
+        //     productoSeleccionado.find(i => i.item.id === detail.item.id).cantidad +=detail.cantidad
+        //     //setCartList(productoSeleccionado)
            
-        }else{
+        //     setCartList([...cartList])
+        // }
+        else{
 
             setCartList([...cartList,detail])
         }

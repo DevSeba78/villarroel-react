@@ -4,6 +4,7 @@ import Table from 'react-bootstrap/Table'
 
 const Cart = () => {
     const {cartList} = useCartContext()
+
     console.log(cartList);
 
     return (
@@ -22,7 +23,7 @@ const Cart = () => {
                         </thead>
                         <tbody>
                             
-                                {cartList.map(item => <tr key={item.item.id}>
+                                {cartList.map(item => (<tr key={item.item.id}>
                                     <td>{item.item.id}</td>
                                     <td>{item.item.name}</td>
                                     <td>{item.cantidad}</td>
@@ -30,7 +31,7 @@ const Cart = () => {
                                     <td>$ {item.item.precio}</td>
                                     <td>$ {item.item.precio*item.cantidad}</td>
                                 </tr>
-                                )}
+                                ))}
                             
                         </tbody>
                                 

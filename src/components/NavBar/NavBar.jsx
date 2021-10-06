@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 
 function NavBar(props) { //recibo count desde APP.jsx
-    const {count} = props; //destructuring saco count de props
+    //const {count} = props; //destructuring saco count de props
     return(
       <>
       <Navbar bg="ligth" expand="lg" >
@@ -55,7 +55,7 @@ function NavBar(props) { //recibo count desde APP.jsx
           </Form>
         </Navbar.Collapse>
         <Link exact to="/Cart"> 
-          <CartWidget count={count} />
+          <CartWidget  />
         </Link>
       </Container>
       
