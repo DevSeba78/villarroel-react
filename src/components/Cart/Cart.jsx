@@ -9,7 +9,7 @@ const Cart = () => {
     return (
         <div className="text-center">
 
-                    <Table responsive> 
+                    <Table striped bordered hover variant="warning" > 
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -21,14 +21,17 @@ const Cart = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                {cartList.map(item => <td key={item.item.id}>
+                            
+                                {cartList.map(item => <tr key={item.item.id}>
+                                    <td>{item.item.id}</td>
                                     <td>{item.item.name}</td>
                                     <td>{item.cantidad}</td>
+                                    <td>botones</td>
                                     <td>$ {item.item.precio}</td>
-                                </td>
+                                    <td>$ {item.item.precio*item.cantidad}</td>
+                                </tr>
                                 )}
-                            </tr>
+                            
                         </tbody>
                                 
                     </Table>

@@ -1,6 +1,7 @@
-
-
+//import {useCartContext} from '../../Context/cartContext'
+//import itemDetails from '../ItemDetailCointainer/ItemDetails'
 const CartWidget = ({count}) => {
+    
     return (
         <>
         

@@ -8,33 +8,35 @@ export default function CartContextProvider ({children}){
     const [cartList, setCartList] = useState([])
     
 
-    function addToCard(detail){//aca va la logica de duplicado
+    function addToCard(detail){//detail es un objeto que viene de itemDetail (addToCard)
         
-        let productoSeleccionado = [...cartList]//detail.find(prod=>prod.item.id === detail.item.id) *****ver esta parte del codigo*****
-        console.log(productoSeleccionado)
+        let productoSeleccionado = [...cartList]
 
+            // if (productoSeleccionado.some(i => i.item.id === detail.item.id)) {
+            //     productoSeleccionado.find(i => i.item.id === detail.item.id).cantidad +=detail.cantidad
+            //     //console.log(productoSeleccionado)
+            //     setCartList(productoSeleccionado)}
+                //  else {setCart([...cart, detail])}}
 
+       
+        if(productoSeleccionado.hasOwnProperty(detail.item.id)) {
+           
+            productoSeleccionado.find(i => i.item.id === detail.item.id).cantidad +=detail.cantidad
+            setCartList(productoSeleccionado)
+           
+        }else{
 
-        // esto no me anda
-        // if(cartList.some(prod=>prod.item.id === detail.item.id)){
-        //     productoSeleccionado.find(prod=>prod.item.id === detail.item.id) //busco id
-        //     productoSeleccionado.detail.cantidad = productoSeleccionado[detail.item.id].cantidad +1
-        //     setCartList(productoSeleccionado)
-        //     console.log(productoSeleccionado)
-        // }
-        setCartList([...cartList,detail])
+            setCartList([...cartList,detail])
+        }
        
 
        
        
-        //     productoSeleccionado.cantidad = cartList[detail.id].cantidad+1
-        //}
-        //console.log(cartList);
     }
     function limpiarCart(detail){
         cartList([])
     }
-    //console.log(cartList);
+    console.log(cartList);
     return(
         <cartContext.Provider value={{
             cartList,
