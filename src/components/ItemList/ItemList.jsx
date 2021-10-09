@@ -1,6 +1,7 @@
 import Item from "./Item"
 
 
+
 const ItemList = ({productos}) => {
     console.log(productos)
       
@@ -9,7 +10,7 @@ const ItemList = ({productos}) => {
         <div className="container justify-content-center d-flex aling-items-center">
            <div className="row"> 
                 {productos.map(articulos =>(
-                    <div className="col-3 mt-2" key={articulos.id}>
+                    <div className="col-3 mt-2 detailCard" key={articulos.id}>
                         <Item articulos={articulos}/>
              </div>)
                 )}

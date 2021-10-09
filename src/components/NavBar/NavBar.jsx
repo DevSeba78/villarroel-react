@@ -9,11 +9,13 @@ import Button from "react-bootstrap/Button";
 import CartWidget from "./CartWidget";
 import {LinkContainer} from 'react-router-bootstrap'
 import { Link } from "react-router-dom";
+import {useCartContext} from '../../Context/cartContext'
 
 
 
 function NavBar(props) { //recibo count desde APP.jsx
-    //const {count} = props; //destructuring saco count de props
+    const {count} = props; //destructuring saco count de props
+    const {itemInCart} = useCartContext();
     return(
       <>
       <Navbar bg="ligth" expand="lg" >
@@ -55,7 +57,8 @@ function NavBar(props) { //recibo count desde APP.jsx
           </Form>
         </Navbar.Collapse>
         <Link exact to="/Cart"> 
-          <CartWidget  />
+            {itemInCart()}
+          <CartWidget count={count} />
         </Link>
       </Container>
       

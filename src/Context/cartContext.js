@@ -14,35 +14,40 @@ export default function CartContextProvider ({children}){
 
             if (productoSeleccionado.some(i => i.item.id === detail.item.id)) {
                 productoSeleccionado.find(i => i.item.id === detail.item.id).cantidad +=detail.cantidad
-                //console.log(productoSeleccionado)
+               
                 setCartList(productoSeleccionado)}
-                //  else {setCart([...cart, detail])}}
-
-       
-        // if(productoSeleccionado.hasOwnProperty(detail.item.id)) {
-           
-        //     productoSeleccionado.find(i => i.item.id === detail.item.id).cantidad +=detail.cantidad
-        //     //setCartList(productoSeleccionado)
-           
-        //     setCartList([...cartList])
-        // }
+         
         else{
 
             setCartList([...cartList,detail])
-        }
+        };       
        
+    }
 
-       
-       
+    const borrarItemCarrito = (detail) => {//borra item de cada producto en el cart
+        const borrarProducto = cartList.filter(c => c.item.id !== detail.item.id);
+        setCartList([...borrarProducto])
     }
-    function limpiarCart(detail){
-        cartList([])
+    const limpiarCart =()=>{
+        setCartList([]);
     }
+
+    const itemInCart =()=>{
+        return cartList.reduce((acc,valor)=>acc + valor.cantidad,0)
+    }
+
+    const nTotal = ()=>{
+
+        return cartList.reduce((acc,valor)=>acc + (valor.cantidad * valor.item.precio),0)
+    } 
     console.log(cartList);
     return(
         <cartContext.Provider value={{
             cartList,
             addToCard,
+            borrarItemCarrito,
+            itemInCart,
+            nTotal,
             limpiarCart}}>
             {children}
         </cartContext.Provider>

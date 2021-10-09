@@ -2,6 +2,7 @@
 import{ useState, useEffect} from "react";
 import ItemList from "./ItemList/ItemList";
 import { useParams } from "react-router-dom";
+import Spinner from 'react-bootstrap/Spinner'
 
 
 const Producto = [
@@ -66,7 +67,9 @@ const ItemListContainer = ({name, onAdd}) => {
         <>
             <p className="text-center mt-3">Bienvenido <strong>{name}</strong> a la app de Ruca </p>
              
-            {loading ?<h4>Cargando page....</h4>: <ItemList productos={productos}/>}
+            {loading ?<Spinner animation="border" role="status">
+                     <span className="visually-hidden">Cargando...</span>
+                    </Spinner>: <ItemList productos={productos}/>}
             
             
         </>

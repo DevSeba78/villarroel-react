@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import ItemDetails from '../ItemDetailCointainer/ItemDetails'
 import {promesa} from "../ItemListContainer"
 import {useParams} from"react-router-dom"; 
+import Spinner from 'react-bootstrap/Spinner'
 //componente que muestra el detalle de cada producto buscado por ID
 
 const ItemDetailsContainer = () => {
@@ -19,7 +20,9 @@ const ItemDetailsContainer = () => {
     return (
         <>
             
-            {loading?<h4>Cargando...</h4>:<ItemDetails detail={detail}/>}
+            {loading?<Spinner className="justify-content-center" animation="border" role="status">
+                     <span className="visually-hidden">Cargando...</span>
+                    </Spinner>:<ItemDetails detail={detail}/>}
             
         </>
         )
