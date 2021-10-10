@@ -3,6 +3,7 @@ import{ useState, useEffect} from "react";
 import ItemList from "./ItemList/ItemList";
 import { useParams } from "react-router-dom";
 import Spinner from 'react-bootstrap/Spinner'
+import { getFirestore } from "../services/getFirebase";
 
 
 const Producto = [
@@ -39,30 +40,49 @@ const ItemListContainer = ({name, onAdd}) => {
     const {idCategoria} = useParams()
         
     useEffect(() => {
+
         if (idCategoria) {
-           
-            promesa
-            .then(resu =>{
-            setProductos(resu.filter(cate => cate.categoria === idCategoria)) //guardo el array que recibo y lo seteo en productos
-            // console.log(resu);
-        })
-        .catch(err => console.error(err))
-        .finally(()=>setLoading(false));
-        }else{
-            
-            promesa
-                .then(resu =>{
-                setProductos(resu) //guardo el array que recibo y lo seteo en productos
-                // console.log(resu);
-            })
+
+            const dbQuery = getFirestore()
+            dbQuery.collection('items').where('categoriaId','==', idCategoria).get()
+            .then((resu) => {setProductos(resu.docs.map(item => ( {id:item.id, ...item.data()} ) )) })
             .catch(err => console.error(err))
             .finally(()=>setLoading(false));
-            
+        }else{
+
+            const dbQuery = getFirestore()
+            dbQuery.collection('items').get()
+            .then((resu) => {setProductos(resu.docs.map(item => ( {id:item.id, ...item.data()} ) )) })
+            .catch(err => console.error(err))
+            .finally(()=>setLoading(false));
         }
+
+
+      
+    //     if (idCategoria) {
+           
+    //         promesa
+    //         .then(resu =>{
+    //         setProductos(resu.filter(cate => cate.categoria === idCategoria)) //guardo el array que recibo y lo seteo en productos
+    //         // console.log(resu);
+    //     })
+    //     .catch(err => console.error(err))
+    //     .finally(()=>setLoading(false));
+    //     }else{
+            
+    //         promesa
+    //             .then(resu =>{
+    //             setProductos(resu) //guardo el array que recibo y lo seteo en productos
+    //             // console.log(resu);
+    //         })
+    //         .catch(err => console.error(err))
+    //         .finally(()=>setLoading(false));
+            
+    //     }
         
     }, [idCategoria])
     
-    console.log(idCategoria);
+    console.log(productos);
     return (
         <>
             <p className="text-center mt-3">Bienvenido <strong>{name}</strong> a la app de Ruca </p>

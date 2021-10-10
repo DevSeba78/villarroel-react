@@ -8,10 +8,10 @@ const Cart = () => {
     const {cartList, borrarItemCarrito,itemInCart,nTotal,limpiarCart} = useCartContext()
     
     if (cartList.length === 0){
-        return <h2 className="text-center">Carrito vacio <br />
+        return <h4 className="text-center">Carrito vacio - empezar a comprar<br />
         <Link to={'/'}>
-            <Button className="btn btn-secondary">Volver a Comprar</Button>
-        </Link> </h2>
+            <Button className="btn btn-secondary">Volver a la Tienda</Button>
+        </Link> </h4>
         
     }
   
@@ -34,8 +34,8 @@ const Cart = () => {
                         <tbody>
                             
                                 {cartList.map(item => (<tr key={item.item.id}>
-                                    <td>{item.item.id}</td>
-                                    <td>{item.item.name} </td>
+                                    <td ><img  src={item.item.img} alt="fotos" style= {{width:50, height:50}}/></td>
+                                    <td>{item.item.title} </td>
                                     <td>{item.cantidad}</td>
                                     <td><Button className ="btn btn-info btn-sm">+</Button>
                                         <Button className ="btn btn-danger btn-sm">-</Button></td>
