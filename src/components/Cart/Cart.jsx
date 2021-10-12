@@ -2,12 +2,13 @@ import {useState} from 'react'
 import {useCartContext} from '../../Context/cartContext'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/ButtonGroup'
-import {Link} from 'react-router-dom'
-import Form from 'react-bootstrap/Form'
+//import {Link} from 'react-router-dom'
+//import Form from 'react-bootstrap/Form'
 import firebase from 'firebase'
 import 'firebase/firestore'
 import { getFirestore } from '../../services/getFirebase'
-import { Col, Row } from 'react-bootstrap'
+//import { Col, Row } from 'react-bootstrap'
+import {LinkContainer} from 'react-router-bootstrap'
 
 const Cart = () => {
     const {cartList, borrarItemCarrito,itemInCart,nTotal,limpiarCart} = useCartContext()
@@ -16,25 +17,25 @@ const Cart = () => {
     const handleOnSubmit = (e) => {
         e.preventDefault()
         let ordenCompra = {}
-        ordenCompra.date = firebase.firestore.Timestamp.forDate(new Date());
+        ordenCompra.date = firebase.firestore.Timestamp.fromDate(new Date());
         
         ordenCompra.buyer = formData
-        ordenCompra.item = cartList
+       // ordenCompra.item = cartList
         ordenCompra.total = nTotal();
-        // ordenCompra.item = cartList.map(cartItem =>{
-        //     const id = cartItem.item.id;
-        //     const title = cartItem.item.title;
-        //     const precio = cartItem.item.precio * cartItem.cantidad;
-        //     return {id,title,precio}
-        // })
+        ordenCompra.item = cartList.map(cartItem =>{
+            const id = cartItem.item.id;
+            const title = cartItem.item.title;
+            const precio = cartItem.item.precio * cartItem.cantidad;
+            return {id,title,precio}
+        })
         console.log(ordenCompra)
         
         const dbQuery = getFirestore();
         dbQuery.collection('orders').add(ordenCompra)
-        .then((resp) =>console.log(resp))
+        .then((resp) =>console.log(resp.id))
         .catch((err) =>console.log(err))
         .finally(()=>{setFormData(estadoInicialCart)
-                      borrarItemCarrito()  
+                     // borrarItemCarrito()  
                     });
     }
 
@@ -49,9 +50,9 @@ const Cart = () => {
     
     if (cartList.length === 0){
         return <h4 className="text-center">Carrito vacio - empezar a comprar<br />
-        <Link to={'/'}>
-            <Button className="btn btn-secondary">Volver a la Tienda</Button>
-        </Link> </h4>
+        <LinkContainer to={'/'}>
+            <Button className="btn btn-secondary mt-2">Volver a la Tienda</Button>
+        </LinkContainer> </h4>
         
     }
   
@@ -88,26 +89,60 @@ const Cart = () => {
                                 <td >{itemInCart()}</td>
                                 <th colSpan="3">Total a pagar: </th>
                                 <td >$ {nTotal()}</td>
-                        </tbody>
-                        
-                           
+                        </tbody>      
                        
                                 
                     </Table>
 
-                    <Form 
+                    <form 
+                                onSubmit={handleOnSubmit}
+                                
+                            >
+                                <input 
+                                    type='text' 
+                                    placeholder='ingrese el nombre' 
+                                    name='name'
+                                    value={formData.name} 
+                                    onChange={handleOnChange}
+                                />  
+                                <input 
+                                    type='text' 
+                                    placeholder='ingrese el nro de tel' 
+                                    name='tel' 
+                                    value={formData.tel}
+                                    onChange={handleOnChange}
+                                />  
+                                <input 
+                                    type='text' 
+                                    placeholder='ingrese el email' 
+                                    name='email' 
+                                    value={formData.email} 
+                                    onChange={handleOnChange}   
+                                />  
+                                <input 
+                                    type='text' 
+                                    placeholder='Confirme el mail ' 
+                                    name='email2' 
+                                    value={formData.emailconfirm}
+                                    onChange={handleOnChange}  
+                                />  <br />
+                                <button className ="btn btn-success btn-sm">Terminar Compra</button>
+                            </form>
+
+
+                    {/* <Form 
                         onSubmit={handleOnSubmit}
-                        onChange={handleOnChange} >
-                        <Row className='container-fluid align-items-center'>
+                         onChange={handleOnChange} >
+                        <Row className='container-fluid align-items-center'> */}
 
                         {/* <Form.Group controlId='formFile' className='mb-3'> */}
-                            <Col sm={3} className='my-1'>
+                            {/* <Col sm={3} className='my-1'>
                             <Form.Label>Nombre</Form.Label>
                             <Form.Control type='text' placeholder="ing nombre" name="name" value={formData.name} />
                             </Col>
                             <Col sm={3} className='my-1'>
                             <Form.Label>Telefono</Form.Label>
-                            <Form.Control type='text' placeholder="ing telefono" name="tel" value={formData.tel} />
+                            <Form.Control type='text' placeholder="ing telefono" name="tel" value={formData.tel}/>
                             </Col>
                             <Col sm={3} className='my-1'>
                             <Form.Label>Correo Electronico</Form.Label>
@@ -116,15 +151,16 @@ const Cart = () => {
                             <Col sm={3} className='my-1'>
                             <Form.Label>Confirme Correo Electronico</Form.Label>
                             <Form.Control type='email' placeholder="Confirme Email" name="email2"  />
-                            </Col>
+                            </Col> */}
                             {/* <Col xs='auto' className='mt-5 my-1'>
                             <Button className ="btn btn-success btn-sm">Terminar compra</Button>
                             </Col> */}
                         {/* </Form.Group> */}
-                        </Row>
+                        {/* </Row> */}
+{/*                             
+                    //         <Button className ="btn btn-success btn-sm m-1">Terminar compra</Button>
                         
-                    </Form>
-                    <Button className ="btn btn-success btn-sm m-1">Terminar compra</Button>
+                    // </Form> */}
 
 
 
@@ -139,9 +175,9 @@ const Cart = () => {
                 
                    
 
-                    <Link to ={'/'}>
-                        <Button className ="btn btn-danger btn-sm" onClick={()=> limpiarCart()}>Vaciar Carrito</Button>
-                    </Link>
+                    <LinkContainer to ={'/'}>
+                        <Button className ="btn btn-danger btn-sm mt-2" onClick={()=> limpiarCart()}>Vaciar Carrito</Button>
+                    </LinkContainer>
                   
             
         </div>

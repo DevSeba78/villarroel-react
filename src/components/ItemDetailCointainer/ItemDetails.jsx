@@ -37,7 +37,8 @@ const ItemDetails = ({detail}) => {//detail viene de ItemDetailContainer
                         <Card.Title>Producto: {detail.name}</Card.Title>
                         <Card.Text>
                             Description: {detail.descripcion}<br/>
-                            Precio: ${detail.precio}
+                            Precio: $ {detail.precio}<br/>
+                            Stock: {detail.stock}<br/>
                         </Card.Text>
                         <ItemCount stock={5} initial={1} onAdd={onAdd}/>
                         </Card.Body>
