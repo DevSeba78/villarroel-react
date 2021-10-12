@@ -1,11 +1,51 @@
-import React from 'react'
+import {useState} from 'react'
 import {useCartContext} from '../../Context/cartContext'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/ButtonGroup'
 import {Link} from 'react-router-dom'
+import Form from 'react-bootstrap/Form'
+import firebase from 'firebase'
+import 'firebase/firestore'
+import { getFirestore } from '../../services/getFirebase'
+import { Col, Row } from 'react-bootstrap'
 
 const Cart = () => {
     const {cartList, borrarItemCarrito,itemInCart,nTotal,limpiarCart} = useCartContext()
+    const [formData, setFormData] = useState(estadoInicialCart)
+    
+    const handleOnSubmit = (e) => {
+        e.preventDefault()
+        let ordenCompra = {}
+        ordenCompra.date = firebase.firestore.Timestamp.forDate(new Date());
+        
+        ordenCompra.buyer = formData
+        ordenCompra.item = cartList
+        ordenCompra.total = nTotal();
+        // ordenCompra.item = cartList.map(cartItem =>{
+        //     const id = cartItem.item.id;
+        //     const title = cartItem.item.title;
+        //     const precio = cartItem.item.precio * cartItem.cantidad;
+        //     return {id,title,precio}
+        // })
+        console.log(ordenCompra)
+        
+        const dbQuery = getFirestore();
+        dbQuery.collection('orders').add(ordenCompra)
+        .then((resp) =>console.log(resp))
+        .catch((err) =>console.log(err))
+        .finally(()=>{setFormData(estadoInicialCart)
+                      borrarItemCarrito()  
+                    });
+    }
+
+    //Funcion que controlo los cambios de estado en react para los Formularios
+    function handleOnChange(e){
+        
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value})
+    }
+    console.log(formData)
     
     if (cartList.length === 0){
         return <h4 className="text-center">Carrito vacio - empezar a comprar<br />
@@ -19,7 +59,7 @@ const Cart = () => {
     return (
         <div className="text-center">
 
-                    <Table striped bordered hover variant="warning" > 
+                    <Table striped bordered hover variant="secondary" > 
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -33,7 +73,7 @@ const Cart = () => {
                         </thead>
                         <tbody>
                             
-                                {cartList.map(item => (<tr key={item.item.id}>
+                                {cartList.map(item => (<tr key={item.item.id} className='justify-content-center align-items-center' >
                                     <td ><img  src={item.item.img} alt="fotos" style= {{width:50, height:50}}/></td>
                                     <td>{item.item.title} </td>
                                     <td>{item.cantidad}</td>
@@ -44,18 +84,63 @@ const Cart = () => {
                                     <td>$ {item.item.precio*item.cantidad}</td>
                                 </tr>
                                 ))}
-                            
+                                <th colSpan="2">Total Productos:</th>
+                                <td >{itemInCart()}</td>
+                                <th colSpan="3">Total a pagar: </th>
+                                <td >$ {nTotal()}</td>
                         </tbody>
-                        <tfoot variant="info">
-                            <th colSpan="2">Total Productos:</th>
-                            <td >{itemInCart()}</td>
-                            <th colSpan="3">Total a pagar: </th>
-                            <td >$ {nTotal()}</td>
-                        </tfoot>
+                        
+                           
+                       
                                 
                     </Table>
+
+                    <Form 
+                        onSubmit={handleOnSubmit}
+                        onChange={handleOnChange} >
+                        <Row className='container-fluid align-items-center'>
+
+                        {/* <Form.Group controlId='formFile' className='mb-3'> */}
+                            <Col sm={3} className='my-1'>
+                            <Form.Label>Nombre</Form.Label>
+                            <Form.Control type='text' placeholder="ing nombre" name="name" value={formData.name} />
+                            </Col>
+                            <Col sm={3} className='my-1'>
+                            <Form.Label>Telefono</Form.Label>
+                            <Form.Control type='text' placeholder="ing telefono" name="tel" value={formData.tel} />
+                            </Col>
+                            <Col sm={3} className='my-1'>
+                            <Form.Label>Correo Electronico</Form.Label>
+                            <Form.Control type='email' placeholder="ing email" name="email" value={formData.email} />
+                            </Col>
+                            <Col sm={3} className='my-1'>
+                            <Form.Label>Confirme Correo Electronico</Form.Label>
+                            <Form.Control type='email' placeholder="Confirme Email" name="email2"  />
+                            </Col>
+                            {/* <Col xs='auto' className='mt-5 my-1'>
+                            <Button className ="btn btn-success btn-sm">Terminar compra</Button>
+                            </Col> */}
+                        {/* </Form.Group> */}
+                        </Row>
+                        
+                    </Form>
+                    <Button className ="btn btn-success btn-sm m-1">Terminar compra</Button>
+
+
+
+
+
+                  
+                        {/* verificar validacion de mail */}
+                        {/* {formData.email !== undefined || !formData.email2 ? <div>
+                            ...
+                        </div>:
+                        <Button className ="btn btn-success btn-sm">Terminar compra</Button>} */}
+                
+                   
+
                     <Link to ={'/'}>
-                        <td><Button className ="btn btn-danger btn-sm" onClick={()=> limpiarCart()}>Vaciar Carrito</Button></td>
+                        <Button className ="btn btn-danger btn-sm" onClick={()=> limpiarCart()}>Vaciar Carrito</Button>
                     </Link>
                   
             
@@ -64,3 +149,11 @@ const Cart = () => {
 }
 
 export default Cart
+const estadoInicialCart= {
+    
+        name: '',
+        tel: '',
+        email: ''
+
+    
+}
