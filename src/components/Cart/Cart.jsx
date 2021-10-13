@@ -132,21 +132,21 @@ const Cart = () => {
 
                     {/* <Form 
                         onSubmit={handleOnSubmit}
-                         onChange={handleOnChange} >
+                         >
                         <Row className='container-fluid align-items-center'> */}
 
                         {/* <Form.Group controlId='formFile' className='mb-3'> */}
                             {/* <Col sm={3} className='my-1'>
                             <Form.Label>Nombre</Form.Label>
-                            <Form.Control type='text' placeholder="ing nombre" name="name" value={formData.name} />
+                            <Form.Control type='text' placeholder="ing nombre" name="name" value={formData.name} onChange={handleOnChange}/>
                             </Col>
                             <Col sm={3} className='my-1'>
                             <Form.Label>Telefono</Form.Label>
-                            <Form.Control type='text' placeholder="ing telefono" name="tel" value={formData.tel}/>
+                            <Form.Control type='text' placeholder="ing telefono" name="tel" value={formData.tel} onChange={handleOnChange}/>
                             </Col>
                             <Col sm={3} className='my-1'>
                             <Form.Label>Correo Electronico</Form.Label>
-                            <Form.Control type='email' placeholder="ing email" name="email" value={formData.email} />
+                            <Form.Control type='email' placeholder="ing email" name="email" value={formData.email} onChange={handleOnChange} />
                             </Col>
                             <Col sm={3} className='my-1'>
                             <Form.Label>Confirme Correo Electronico</Form.Label>
