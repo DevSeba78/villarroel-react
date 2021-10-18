@@ -1,4 +1,5 @@
 import {createContext, useState, useContext} from 'react'
+//import itemCount from '../../src/components/ItemCount'
 
 const cartContext = createContext([])
 

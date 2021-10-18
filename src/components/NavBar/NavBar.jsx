@@ -15,7 +15,7 @@ import {useCartContext} from '../../Context/cartContext'
 
 function NavBar(props) { //recibo count desde APP.jsx
     const {count} = props; //destructuring saco count de props
-    const {itemInCart} = useCartContext();
+    const {itemInCart} = useCartContext();//viene de cartContext
     return(
       <>
       <Navbar bg="ligth" expand="lg" >

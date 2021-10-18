@@ -10,9 +10,12 @@ import { getFirestore } from '../../services/getFirebase'
 //import { Col, Row } from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 
+
+
 const Cart = () => {
     const {cartList, borrarItemCarrito,itemInCart,nTotal,limpiarCart} = useCartContext()
     const [formData, setFormData] = useState(estadoInicialCart)
+    const [cant, setCant] = useState('')
     
     const handleOnSubmit = (e) => {
         e.preventDefault()
@@ -32,11 +35,26 @@ const Cart = () => {
         
         const dbQuery = getFirestore();
         dbQuery.collection('orders').add(ordenCompra)
-        .then((resp) =>console.log(resp.id))
+        .then(resp => alert(`la orden de compra es: ${resp.id}`))
         .catch((err) =>console.log(err))
         .finally(()=>{setFormData(estadoInicialCart)
-                     // borrarItemCarrito()  
+            limpiarCart()  
                     });
+
+                    const itemsToUpdate = dbQuery.collection('items').where(firebase.firestore.FieldPath.documentId(), 'in', cartList.map(i=>i.item.id))
+
+                    const batch = dbQuery.batch();
+                
+                    itemsToUpdate.get()
+                    .then(collection =>{collection.docs.forEach(docSnapshot => {
+                        batch.update(docSnapshot.ref,{
+                            stock: docSnapshot.data().stock - cartList.find(item => item.item.id === docSnapshot.id).cantidad
+                        })
+                        batch.commit().then(res => {
+                            console.log('resultado batch es: ', res);
+                        })
+                        
+                    });})
     }
 
     //Funcion que controlo los cambios de estado en react para los Formularios
@@ -46,7 +64,12 @@ const Cart = () => {
             ...formData,
             [e.target.name]: e.target.value})
     }
-    console.log(formData)
+    function Sumar() {
+        setCant (cant + 1)
+
+    }
+    
+
     
     if (cartList.length === 0){
         return <h4 className="text-center">Carrito vacio - empezar a comprar<br />
@@ -78,9 +101,9 @@ const Cart = () => {
                                     <td ><img  src={item.item.img} alt="fotos" style= {{width:50, height:50}}/></td>
                                     <td>{item.item.title} </td>
                                     <td>{item.cantidad}</td>
-                                    <td><Button className ="btn btn-info btn-sm">+</Button>
+                                    <td><Button className ="btn btn-info btn-sm" onclick={Sumar}>+</Button>
                                         <Button className ="btn btn-danger btn-sm">-</Button></td>
-                                    <td><Button className ="btn btn-dark btn-sm" onClick={()=>borrarItemCarrito(item)}>X</Button></td>
+                                    <td><Button className ="btn btn-dark btn-sm" onClick={()=>borrarItemCarrito(item)}>X </Button></td>
                                     <td>$ {item.item.precio}</td>
                                     <td>$ {item.item.precio*item.cantidad}</td>
                                 </tr>

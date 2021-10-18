@@ -4,6 +4,7 @@ import ItemList from "./ItemList/ItemList";
 import { useParams } from "react-router-dom";
 import Spinner from 'react-bootstrap/Spinner'
 import { getFirestore } from "../services/getFirebase";
+//import CarrouselImg from "./NavBar/CarrouselImg";
 
 
 const Producto = [
@@ -56,29 +57,6 @@ const ItemListContainer = ({name, onAdd}) => {
             .catch(err => console.error(err))
             .finally(()=>setLoading(false));
         }
-
-
-      
-    //     if (idCategoria) {
-           
-    //         promesa
-    //         .then(resu =>{
-    //         setProductos(resu.filter(cate => cate.categoria === idCategoria)) //guardo el array que recibo y lo seteo en productos
-    //         // console.log(resu);
-    //     })
-    //     .catch(err => console.error(err))
-    //     .finally(()=>setLoading(false));
-    //     }else{
-            
-    //         promesa
-    //             .then(resu =>{
-    //             setProductos(resu) //guardo el array que recibo y lo seteo en productos
-    //             // console.log(resu);
-    //         })
-    //         .catch(err => console.error(err))
-    //         .finally(()=>setLoading(false));
-            
-    //     }
         
     }, [idCategoria])
     
@@ -89,7 +67,8 @@ const ItemListContainer = ({name, onAdd}) => {
              
             {loading ?<Spinner animation="border" role="status">
                      <span className="visually-hidden">Cargando...</span>
-                    </Spinner>: <ItemList productos={productos}/>}
+                    </Spinner>: <ItemList productos={productos}/>
+                    }
             
             
         </>

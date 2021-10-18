@@ -36,7 +36,7 @@ const ItemDetails = ({detail}) => {//detail viene de ItemDetailContainer
                         <Card.Body className="justify-content text-center">
                         <Card.Title>Producto: {detail.name}</Card.Title>
                         <Card.Text>
-                            Description: {detail.descripcion}<br/>
+                            Descripcion: {detail.descripcion}<br/>
                             Precio: $ {detail.precio}<br/>
                             Stock: {detail.stock}<br/>
                         </Card.Text>
