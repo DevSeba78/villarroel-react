@@ -10,6 +10,7 @@ import Cart from './components/Cart/Cart';
 import CartContextProvider from './Context/cartContext';
 
 
+
 function App() {
 
 
@@ -18,6 +19,7 @@ function App() {
       <CartContextProvider>
       <BrowserRouter>
       <NavBar /> 
+     
       <Switch>
         <Route path="/" exact>
           <ItemListContainer />
@@ -40,21 +42,3 @@ function App() {
 
 export default App;
 
-// import React, { useState } from 'react';
-// import './style.css';
-
-// export default function App() {
-//   const [count, setCount] = useState(0);
-//   const [date, setDate] = useState(Date());
-//   const handleCount = () => {
-//     setCount(count+1);
-//     setDate(Date())
-//   };
-//   return (
-//     <div>
-//       <h1>{count}</h1>
-//       <h1>{date}</h1>
-//       <button onClick={handleCount}>Contar</button>
-//     </div>
-//   );
-// }

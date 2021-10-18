@@ -8,6 +8,7 @@ import ItemCount from '../ItemCount'
 import {useState} from 'react' // useContext para evitar esportar varios useContext lo exportamos desde el componente que viene. Aca se deja de usar useContext y exportamos 
 import { useCartContext } from '../../Context/cartContext'
 import './itemDetail.css'
+import CarrouselImg from '../NavBar/CarrouselImg'
 
 
 
@@ -27,10 +28,11 @@ const ItemDetails = ({detail}) => {//detail viene de ItemDetailContainer
     
     return (
         <>
+            <CarrouselImg />
             {<Container>
                 <Row className="justify-content-md-center mt-2">
                 
-                    <Col className="col-md-4 detailCard">
+                    <Col className="col-md-4">
                     <Card  style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={detail.img} alt="fotos" className="h-150"/>
                         <Card.Body className="justify-content text-center">

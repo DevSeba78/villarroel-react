@@ -33,8 +33,6 @@ const Item = ({articulos}) => {
                         <LinkContainer to={`/detalle/${articulos.id}`}> 
                             <Button className="btn btn-outline-success" >Detalles</Button>
                         </LinkContainer>
-                        {/* <ItemDetails mostrar={MostrarDetalles}/> */}
-                        {/* //<ItemCount /> */}
                         </Card.Body>
                         
                     </Card>

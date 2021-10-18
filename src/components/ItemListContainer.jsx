@@ -4,6 +4,7 @@ import ItemList from "./ItemList/ItemList";
 import { useParams } from "react-router-dom";
 import Spinner from 'react-bootstrap/Spinner'
 import { getFirestore } from "../services/getFirebase";
+import CarrouselImg from "./NavBar/CarrouselImg";
 //import CarrouselImg from "./NavBar/CarrouselImg";
 
 
@@ -63,11 +64,13 @@ const ItemListContainer = ({name, onAdd}) => {
     console.log(productos);
     return (
         <>
+            <CarrouselImg />
             <p className="text-center mt-3">Bienvenido <strong>{name}</strong> a la app de Ruca </p>
              
-            {loading ?<Spinner animation="border" role="status">
+            {loading ?
+                    <Spinner animation="border" role="status">
                      <span className="visually-hidden">Cargando...</span>
-                    </Spinner>: <ItemList productos={productos}/>
+                    </Spinner> : <ItemList productos={productos}/>
                     }
             
             
