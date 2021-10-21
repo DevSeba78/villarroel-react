@@ -1,6 +1,5 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card'
-//import Button from 'react-bootstrap/ButtonGroup'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
@@ -19,7 +18,7 @@ const ItemDetails = ({detail}) => {//detail viene de ItemDetailContainer
     const {addToCard}= useCartContext() //useCartContext
 
     const onAdd = (cant) => {//declaro aca la funcion onadd aca para luego pasar los estados (props) a los hijos
-        console.log(cant);
+        
     setCantidadSeleccionada(cant)
     addToCard({item:detail,cantidad: cant})
     console.log(cantSeleccionada);

@@ -56,8 +56,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
                     
                     
                  
-                {/* </Card.Body>
-            </Card> */}
+                
 
             
         </div>

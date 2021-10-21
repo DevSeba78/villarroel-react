@@ -1,5 +1,5 @@
 import {createContext, useState, useContext} from 'react'
-//import itemCount from '../../src/components/ItemCount'
+
 
 const cartContext = createContext([])
 
@@ -41,7 +41,7 @@ export default function CartContextProvider ({children}){
 
         return cartList.reduce((acc,valor)=>acc + (valor.cantidad * valor.item.precio),0)
     } 
-    console.log(cartList);
+    
     return(
         <cartContext.Provider value={{
             cartList,
@@ -55,25 +55,3 @@ export default function CartContextProvider ({children}){
     )
 }
 
-// export default function cartContextProvider({children}) {
-//     const [carList, setCartList] = useState([])
-
-//     function addToCard(item) {
-//         setCartList(...carList,item)
-//     }
-//     function borrarLista(){
-//         carList([])
-//     }
-//     return
-//         (
-//             <>
-//         <cartContext.Provider value={{
-//             carList,
-//              addToCard,
-//              borrarLista
-//              }}>
-//             {children}
-//         </cartContext.Provider>
-//         </>
-//         )
-//  }
