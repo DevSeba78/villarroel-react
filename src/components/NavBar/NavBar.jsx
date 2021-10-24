@@ -50,7 +50,7 @@ function NavBar(props) { //recibo count desde APP.jsx
            
           </Form>
         </Navbar.Collapse>
-        <Link exact to="/Cart"> 
+        <Link exact  to="/Cart"> 
             {itemInCart()}
           <CartWidget count={count} />
         </Link>
