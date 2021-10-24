@@ -8,7 +8,7 @@ const Item = ({articulos}) => {
     return (
         <>
             {
-                    <Card style={{ width: '18rem' }} >
+                    <Card style={{ width: '18rem', boxShadow: '8px 14px 5px 0px rgba(0,0,0,0.75)'}} >
                         <Card.Img variant="top" src={articulos.img} alt="fotos" className="h-150" />
                         <Card.Body className="justify-content text-center">
                         <Card.Title>Producto: {articulos.title}</Card.Title>

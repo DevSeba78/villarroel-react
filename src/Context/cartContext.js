@@ -41,6 +41,25 @@ export default function CartContextProvider ({children}){
 
         return cartList.reduce((acc,valor)=>acc + (valor.cantidad * valor.item.precio),0)
     } 
+
+    const add = (detail) => {
+        const lista = [...cartList]
+        const position = lista.findIndex(i => i.item.id === detail.item.id)
+        lista[position].cantidad += 1
+        
+        // while (lista[position].item.stock > 0) {
+        //     lista[position].item.stock -= 1
+        // } 
+        
+        setCartList(lista)
+    }
+    const rest = (detail) => {
+        const lista = [...cartList]
+        const position = lista.findIndex(i => i.item.id === detail.item.id)
+        lista[position].cantidad -= 1
+        // lista[position].stock += 1
+        setCartList(lista)
+    }
     
     return(
         <cartContext.Provider value={{
@@ -49,7 +68,9 @@ export default function CartContextProvider ({children}){
             borrarItemCarrito,
             itemInCart,
             nTotal,
-            limpiarCart}}>
+            limpiarCart,
+            add,
+            rest}}>
             {children}
         </cartContext.Provider>
     )

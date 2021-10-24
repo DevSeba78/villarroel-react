@@ -9,36 +9,44 @@ import {LinkContainer} from 'react-router-bootstrap'
 
 const ItemCount = ({stock, initial, onAdd}) => {
     const [count, setCount] = useState(initial)
+    const [inventario, setInventario] = useState(stock)
     const [cambiarBoton, setCambiarBoton] = useState(true)
+    
     
    
     function Agregar (){
-        if (count <5) {
+        if (inventario > 0) {
             setCount(count + 1) 
+            setInventario(inventario-1)
+            
             
         }
         
     }
     function restart() {
-        if (count > 1) {
+        if (count > 0) {
             setCount(count-1)
+            setInventario(inventario+1)
            
         }
         
     }
     const agregarCarrito = ()=> {
-        onAdd(count)
+        onAdd(count,inventario)
         setCambiarBoton(false);
     }
     return (
         <div>
           
                     <Card.Text>
+                    <b>Stock:</b> {inventario} <br />
                      <strong>Cant:</strong> {count}
+
                     </Card.Text>
                     
                     {cambiarBoton ?
                     <>
+                        
                         <Button className="btn btn-outline-info" onClick={Agregar}>+</Button>
                         <Button className="btn btn-outline-primary" onClick={agregarCarrito}>Agregar al carrito</Button>
                         <Button className="btn btn-outline-danger" onClick={restart}>-</Button>

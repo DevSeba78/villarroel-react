@@ -1,5 +1,7 @@
 import Item from "./Item"
-
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
 
 
 const ItemList = ({productos}) => {
@@ -7,17 +9,20 @@ const ItemList = ({productos}) => {
       
     return (
         <>
-        <div className="container justify-content-center d-flex aling-items-center">
-           <div className="row"> 
+        <Container fluid>
+            <Row  xs={1} sm={2} md={3} lg={4} className="g-6 justify-content-center">
+         
                 {productos.map(articulos =>(
-                    <div className="col-3 mt-2 detailCard" key={articulos.id}>
+                    <Col  xs={8} md={3} key={articulos.id} className='mt-2'>
                         <Item articulos={articulos}/>
-             </div>)
+             </Col>)
                 )}
-            </div> 
-            </div>  
+            </Row>
+        
+        </Container>  
         </>
     )
 }
 
 export default ItemList
+// className="container justify-content-center d-flex aling-items-center"
