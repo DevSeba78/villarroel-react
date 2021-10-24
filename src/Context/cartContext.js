@@ -45,19 +45,30 @@ export default function CartContextProvider ({children}){
     const add = (detail) => {
         const lista = [...cartList]
         const position = lista.findIndex(i => i.item.id === detail.item.id)
-        lista[position].cantidad += 1
+        console.log(lista[position].item.stock)
+        if (lista[position].item.stock >= 1) {
+            lista[position].cantidad += 1
+            lista[position].item.stock -= 1
+        }else{
+            alert( `Producto ${lista[position].item.title} sin Stock` )
+        }
         
-        // while (lista[position].item.stock > 0) {
-        //     lista[position].item.stock -= 1
-        // } 
+        
         
         setCartList(lista)
     }
     const rest = (detail) => {
         const lista = [...cartList]
         const position = lista.findIndex(i => i.item.id === detail.item.id)
-        lista[position].cantidad -= 1
-        // lista[position].stock += 1
+        if (lista[position].item.stock >= 0) {
+            lista[position].cantidad -= 1
+            lista[position].item.stock += 1
+        }else{
+            alert( `Producto ${lista[position].item.title} en 0` )
+        }
+
+        // lista[position].cantidad -= 1
+        
         setCartList(lista)
     }
     

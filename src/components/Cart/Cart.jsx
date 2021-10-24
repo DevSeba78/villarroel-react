@@ -2,8 +2,6 @@ import {useState} from 'react'
 import {useCartContext} from '../../Context/cartContext'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/ButtonGroup'
-//import {Link} from 'react-router-dom'
-//import Form from 'react-bootstrap/Form'
 import firebase from 'firebase'
 import 'firebase/firestore'
 import { getFirestore } from '../../services/getFirebase'
@@ -107,9 +105,11 @@ const Cart = () => {
                                     <td ><img  src={item.item.img} alt="fotos" style= {{width:50, height:50}}/></td>
                                     <td>{item.item.title} </td>
                                     <td>{item.cantidad}</td>
-                                    <td><Button className ="btn btn-info btn-sm" onClick={()=>add(item)}><FontAwesomeIcon icon={faPlus}/></Button>
-                                        <Button className ="btn btn-danger btn-sm"onClick={()=>rest(item)}><FontAwesomeIcon icon={faMinus}/></Button></td>
-                                    <td><Button className ="btn btn-dark btn-sm" onClick={()=>borrarItemCarrito(item)}><FontAwesomeIcon icon={faTrashAlt}/> </Button></td>
+                                    <td>
+                                        <Button className ="btn btn-info btn-sm mr-2" onClick={()=>add(item)}><FontAwesomeIcon icon={faPlus}/></Button>
+                                        <Button className ="btn btn-danger btn-sm ml-2"onClick={()=>rest(item)}><FontAwesomeIcon icon={faMinus}/></Button>
+                                    </td>
+                                    <td><Button className ="btn btn-dark btn-sm " onClick={()=>borrarItemCarrito(item)}><FontAwesomeIcon icon={faTrashAlt}/> </Button></td>
                                     <td>$ {item.item.precio}</td>
                                     <td>$ {item.item.precio*item.cantidad}</td>
                                 </tr>

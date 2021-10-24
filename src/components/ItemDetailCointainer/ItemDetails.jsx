@@ -34,8 +34,8 @@ const ItemDetails = ({detail}) => {//detail viene de ItemDetailContainer
                 <Row xs={1} sm={2} md={3} lg={4} className="g-6 justify-content-md-center mt-2" >
                 
                     <Col className="col-md-4 sm-2">
-                    <Card  style={{ width: '18rem', boxShadow: '8px 14px 5px 0px rgba(0,0,0,0.75)' }}>
-                        <Card.Img variant="top" src={detail.img} alt="fotos" className="h-150"/>
+                    <Card  style={{width: '18rem', boxShadow: '8px 14px 5px 0px rgba(0,0,0,0.75)'}}>
+                        <Card.Img variant="top" src={detail.img} alt="fotos" style={{width:286.4, height:284.4 }}/>
                         <Card.Body className="justify-content text-center">
                         <Card.Title>Producto: {detail.name}</Card.Title>
                         <Card.Text>
