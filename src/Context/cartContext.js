@@ -60,11 +60,12 @@ export default function CartContextProvider ({children}){
     const rest = (detail) => {
         const lista = [...cartList]
         const position = lista.findIndex(i => i.item.id === detail.item.id)
-        if (lista[position].item.stock >= 0) {
+        if (lista[position].cantidad === 0) {
+            alert( `Producto ${lista[position].item.title} en 0` )
+            
+        }else{
             lista[position].cantidad -= 1
             lista[position].item.stock += 1
-        }else{
-            alert( `Producto ${lista[position].item.title} en 0` )
         }
 
         // lista[position].cantidad -= 1
