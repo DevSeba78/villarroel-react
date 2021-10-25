@@ -6,8 +6,13 @@ import firebase from 'firebase'
 import 'firebase/firestore'
 import { getFirestore } from '../../services/getFirebase'
 import {LinkContainer} from 'react-router-bootstrap'
+import Form from 'react-bootstrap/Form'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faPlus, faMinus, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
+import Container from 'react-bootstrap/Container'
+
 
 const estadoInicialCart= {
     
@@ -122,13 +127,15 @@ const Cart = () => {
                        
                                 
                     </Table>
-
+                    <Container className="d-flex justify-content-center">
                     <form       
                         style={{display: 'block'}}
                         onSubmit={handleOnSubmit}
                                 
                             >   
-                               
+                             <Row className='mb-3' > 
+                                <Col xs='auto'>
+                                    <Form.Label>Nombre y apellido: </Form.Label>
                                 <input 
                                     type='text' 
                                     placeholder='ingrese el nombre' 
@@ -137,7 +144,9 @@ const Cart = () => {
                                     onChange={handleOnChange}
                                     required
                                 />  
-                               
+                                </Col>
+                                <Col xs='auto'>
+                                    <Form.Label>Telefono: </Form.Label>
                                 <input 
                                     type='text' 
                                     placeholder='ingrese el nro de tel' 
@@ -146,7 +155,9 @@ const Cart = () => {
                                     onChange={handleOnChange}
                                     required
                                 />  
-                                
+                                </Col>
+                                <Col xs='auto'>
+                                    <Form.Label>Email: </Form.Label>
                                 <input 
                                     type='text' 
                                     placeholder='ingrese el email' 
@@ -155,23 +166,26 @@ const Cart = () => {
                                     onChange={handleOnChange}  
                                     required 
                                 />  
+                                </Col>
+                                <Col xs='auto'>
+                                    <Form.Label>Confirmar Email: </Form.Label>
                                 <input 
                                     type='text' 
                                     placeholder='Confirme el mail ' 
                                     name='email2' 
                                     value={formData.emailconfirm}
                                     onChange={handleOnChange} 
-                                    required
-                                    
-                                   
-                                />  <br />
-                                
+                                    required       
+                                />
+                                </Col>
+                                <br />
+                                </Row>
                                  <button className="btn btn-success btn-sm">Terminar Compra</button>
-                                
-                             
-                               
+                                                       
                             </form>
-                   
+                        </Container>
+                        
+                                  
                     <LinkContainer to ={'/'}>
                         <Button className ="btn btn-danger btn-sm mt-2" onClick={()=> limpiarCart()}>Vaciar Carrito</Button>
                     </LinkContainer>
