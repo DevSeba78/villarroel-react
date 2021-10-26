@@ -159,7 +159,7 @@ const Cart = () => {
                                 <Col xs='auto'>
                                     <Form.Label>Email: </Form.Label>
                                 <input 
-                                    type='text' 
+                                    type='email' 
                                     placeholder='ingrese el email' 
                                     name='email' 
                                     value={formData.email} 

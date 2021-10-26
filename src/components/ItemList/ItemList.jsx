@@ -13,7 +13,7 @@ const ItemList = ({productos}) => {
             <Row  xs={1} sm={2} md={3} lg={4} className="g-6 justify-content-center">
          
                 {productos.map(articulos =>(
-                    <Col  xs={8} md={3} key={articulos.id} className='mt-2'>
+                    <Col  xs={8} md={3} key={articulos.id} className='mt-3'>
                         <Item articulos={articulos}/>
              </Col>)
                 )}
