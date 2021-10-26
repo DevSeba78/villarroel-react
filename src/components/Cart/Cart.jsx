@@ -148,7 +148,7 @@ const Cart = () => {
                                 <Col xs='auto'>
                                     <Form.Label>Telefono: </Form.Label>
                                 <input 
-                                    type='text' 
+                                    type='number' 
                                     placeholder='ingrese el nro de tel' 
                                     name='tel' 
                                     value={formData.tel}
@@ -170,7 +170,7 @@ const Cart = () => {
                                 <Col xs='auto'>
                                     <Form.Label>Confirmar Email: </Form.Label>
                                 <input 
-                                    type='text' 
+                                    type='email' 
                                     placeholder='Confirme el mail ' 
                                     name='email2' 
                                     value={formData.emailconfirm}
