@@ -92,7 +92,7 @@ const Cart = () => {
     return (
         <div className="text-center">
 
-                    <Table striped bordered hover variant="secondary" > 
+                    <Table striped bordered hover variant="secondary" responsive="sm md" > 
                         <thead>
                             <tr>
                                 <th>#</th>
