@@ -136,7 +136,7 @@ const Cart = () => {
                              <Row className='mb-3' > 
                                 <Col xs='auto'>
                                     <Form.Label>Nombre y apellido: </Form.Label>
-                                <input 
+                                <Form.Control 
                                     type='text' 
                                     placeholder='ingrese el nombre' 
                                     name='name'
@@ -147,7 +147,7 @@ const Cart = () => {
                                 </Col>
                                 <Col xs='auto'>
                                     <Form.Label>Telefono: </Form.Label>
-                                <input 
+                                <Form.Control 
                                     type='number' 
                                     placeholder='ingrese el nro de tel' 
                                     name='tel' 
@@ -158,7 +158,7 @@ const Cart = () => {
                                 </Col>
                                 <Col xs='auto'>
                                     <Form.Label>Email: </Form.Label>
-                                <input 
+                                <Form.Control 
                                     type='email' 
                                     placeholder='ingrese el email' 
                                     name='email' 
@@ -169,7 +169,7 @@ const Cart = () => {
                                 </Col>
                                 <Col xs='auto'>
                                     <Form.Label>Confirmar Email: </Form.Label>
-                                <input 
+                                <Form.Control 
                                     type='email' 
                                     placeholder='Confirme el mail ' 
                                     name='email2' 
@@ -184,6 +184,7 @@ const Cart = () => {
                                                        
                             </form>
                         </Container>
+
                         
                                   
                     <LinkContainer to ={'/'}>
@@ -196,4 +197,6 @@ const Cart = () => {
 }
 
 export default Cart
+
+
 
