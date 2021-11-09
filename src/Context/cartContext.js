@@ -45,7 +45,7 @@ export default function CartContextProvider ({children}){
     const add = (detail) => {
         const lista = [...cartList]
         const position = lista.findIndex(i => i.item.id === detail.item.id)
-        console.log(lista[position].item.stock)
+        
         if (lista[position].item.stock >= 1) {
             lista[position].cantidad += 1
             lista[position].item.stock -= 1
