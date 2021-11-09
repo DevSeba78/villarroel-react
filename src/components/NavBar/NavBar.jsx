@@ -24,7 +24,7 @@ function NavBar(props) { //recibo count desde APP.jsx
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
            
-            <LinkContainer exact to={`/categoria/Manteleria`}> 
+            <LinkContainer  to={`/categoria/Manteleria`}> 
             <Nav.Link href="#link">Manteleria</Nav.Link>
             </LinkContainer>
             <LinkContainer  to="/categoria/Deco"> 
@@ -50,7 +50,7 @@ function NavBar(props) { //recibo count desde APP.jsx
            
           </Form>
         </Navbar.Collapse>
-        <Link exact  to="/Cart"> 
+        <Link   to="/Cart"> 
             {itemInCart()}
           <CartWidget count={count} />
         </Link>
