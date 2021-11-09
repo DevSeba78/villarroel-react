@@ -14,7 +14,7 @@ import CartContextProvider from './Context/cartContext';
 function App() {
 
 
-  console.log(CartContextProvider);
+ 
   return (
       <CartContextProvider>
       <BrowserRouter>
