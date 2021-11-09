@@ -119,10 +119,12 @@ const Cart = () => {
                                     <td>$ {item.item.precio*item.cantidad}</td>
                                 </tr>
                                 ))}
+                                <tr>
                                 <th colSpan="2">Total Productos:</th>
                                 <td >{itemInCart()}</td>
                                 <th colSpan="3">Total a pagar: </th>
                                 <td >$ {nTotal()}</td>
+                                </tr>
                         </tbody>      
                        
                                 

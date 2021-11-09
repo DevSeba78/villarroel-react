@@ -22,8 +22,8 @@ const ItemDetails = ({detail}) => {//detail viene de ItemDetailContainer
     setCantidadSeleccionada(cant)
     setinventSeleccionada(inventario)
     addToCard({item:detail,cantidad: cant})
-    // console.log(cantSeleccionada);
-    // console.log(inventSeleccionada);
+    console.log(cantSeleccionada);
+    console.log(inventSeleccionada);
     
     }
     
