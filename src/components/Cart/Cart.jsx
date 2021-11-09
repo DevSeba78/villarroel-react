@@ -90,9 +90,9 @@ const Cart = () => {
   
 
     return (
-        <div className="text-center">
+        <div className="text-center container">
 
-                    <Table striped bordered hover variant="secondary" responsive="sm md" > 
+                    <Table striped bordered hover variant="secondary" responsive > 
                         <thead>
                             <tr>
                                 <th>#</th>
